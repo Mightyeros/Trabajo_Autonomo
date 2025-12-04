@@ -38,7 +38,4 @@ Dado que el juego es un proceso secuencial con puntos de decisión claros:
 
 El diagrama de flujo es el más adecuado para visualizar el algoritmo antes de la codificación porque permite identificar claramente dónde se necesitan bucles y dónde se ramifica la lógica condicional.
 
-Sistema de Puntuación Para transformar el juego se implementara una competencia continua. Llevando el contador de las victorias
-La existencia del bucle principal motiva al usuario a seguir jugando para superar a la máquina.
-Se implementará mediante dos variables contadoras de tipo entero definidas en el código como `player_score` y `computer_score`. Estas se inicializarán a `0` *antes* de entrar al bucle principal. Dentro del bucle, tras la lógica condicional que determina el ganador de la ronda, se utilizarán operadores de asignación de suma nativos de Python (ej. `player_score += 1` si gana el usuario, o `computer_score += 1` si gana la PC)
 
