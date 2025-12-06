@@ -9,9 +9,14 @@ Para diseñar este juego no quise limitarme a cumplir con "una partida y ya". An
 
 Así que planteé las siguientes soluciones:
 
-Sistema de Puntuación Para transformar el juego se implementara un contador de victorias
-La existencia del bucle principal motiva al usuario a seguir jugando para superar a la máquina.
-Se implementará mediante dos variables contadoras de tipo entero definidas en el código como `player_score` y `computer_score`. Estas se inicializarán a `0` *antes* de entrar al bucle principal. Dentro del bucle, tras la lógica condicional que determina el ganador de la ronda, se utilizarán operadores de asignación de suma nativos de Python (ej. `player_score += 1` si gana el usuario, o `computer_score += 1` si gana la PC)
+Sistema de Puntuación 
+Para que el juego sea competitivo, es necesario un marcador que vaya sumando las victorias del jugador y de la maquina
+con el fin de querer vencer a la PC y con ese objetivo motivarse a seguir jugando
+Se implementará mediante dos variables contadoras de tipo entero definidas claramente como `marcador_jugador` y `marcador_pc`. Estas se inicializan a `0` al comenzar una nueva partida. Dentro del bucle de juego, tras determinar el ganador de la ronda, se utilizarán operadores de asignación para actualizar el estado.
+
+Navegación Estructurada (Menú Principal)
+Se ha implementado un menú de inicio general mediante una estructura repetitiva principal (`while`).
+Control de Flujo: Para controlar este bucle principal, se utiliza una variable booleana descriptiva llamada `juego_corriendo`, que actúa como el "interruptor" de la aplicación. La elección del usuario en el menú se almacena en la variable numérica `menu_principal`, la cual es evaluada por estructuras condicionales (`if/elif`) para dirigir el flujo a la función correspondiente (jugar, reglas o salir).
 
 Juego Continuo (¡Que no se cierre!): Es frustrante que un programa se cierre apenas termina una ronda. Por eso, implementé un bucle principal (un while) que mantiene el juego vivo, permitiendo jugar tantas revanchas como el usuario quiera hasta que decida salir.
 
