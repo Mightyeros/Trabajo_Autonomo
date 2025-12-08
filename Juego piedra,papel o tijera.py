@@ -5,8 +5,7 @@ Created on [Diciembre 2025]
 
 Descripción:
 Esqueleto estructurado para el juego Piedra, Papel o Tijera (FASE 1).
-Incluye menú principal, bucles de juego y manejo de errores, con variables en español.
-La lógica de comparación se implementará en la Fase 2.
+Incluye menú principal, bucles de juego y manejo de errores.
 """
 
 import random # Esta libreria permitira que la elecciones de la PC sean totalmente aleatorias
@@ -33,7 +32,7 @@ def jugar_partida():
     print("\n¡Iniciando el juego...")
     time.sleep(1) # Pausa dramática de 1 segundo
     
-    # --- VARIABLES EN ESPAÑOL (Marcadores) ---
+    # --- VARIABLES (Marcadores) ---
     # Se reinician a 0 cada vez que empieza una nueva partida
     marcador_jugador = 0
     marcador_pc = 0
@@ -57,10 +56,44 @@ def jugar_partida():
                 jugando_ronda = False # Apaga el interruptor, el bucle while terminará
                 
             elif 1 <= opcion_juego <= 3:
-                # Si eligió 1, 2 o 3, es una jugada válida.
-                print("\n[LOGICA PENDIENTE - FASE 2]: Has elegido una jugada válida.")
-                # AQUÍ ES DONDE VA A IR EL FUNCIONAMIENTO LOGICO DEL JUEGO
-                time.sleep(0.5) # Pequeña pausa antes de la siguiente ronda
+                # --- FASE 2 COMPLETA: LÓGICA Y PUNTUACIÓN ---
+                print("\n--- ¡Piedra, Papel o Tijera! ---")
+                time.sleep(0.5) # Pequeña pausa de suspenso
+
+                # 1. ELECCIÓN DE LA PC Y MOSTRAR TEXTOS
+                opcion_pc = random.randint(1, 3)
+                nombres_opciones = ["", "Piedra", "Papel", "Tijera"]
+                
+                print(f"Tú elegiste: [{nombres_opciones[opcion_juego]}]")
+                print(f"La PC eligió: [{nombres_opciones[opcion_pc]}]")
+                print("--------------------------------")
+                time.sleep(0.5)
+
+                # 2. EL ÁRBITRO Y 3. ACTUALIZACION MARCADORES
+                
+                # CASO A: EMPATE
+                if opcion_juego == opcion_pc:
+                    print("Resultado: ¡Es un EMPATE!")
+                
+                # CASO B: TÚ GANAS (Las 3 combinaciones ganadoras)
+                # Usamos 'or' para decir "si pasa esto O esto O esto"
+                # Usamos 'and' para decir "si yo elegí X Y la pc eligió Y"
+                # (1=Piedra, 2=Papel, 3=Tijera)
+                elif (opcion_juego == 1 and opcion_pc == 3) or \
+                     (opcion_juego == 2 and opcion_pc == 1) or \
+                     (opcion_juego == 3 and opcion_pc == 2):
+                         print("Resultado: ¡TÚ GANAS la ronda!")
+                         # Actualizamos tu marcador sumando 1
+                         marcador_jugador += 1
+                         
+                # CASO C: TÚ PIERDES (Cualquier otro caso)
+                else:
+                    print("Resultado: ¡La PC GANA la ronda!")
+                    # Actualizamos el marcador de la PC sumando 1
+                    marcador_pc += 1
+                
+                print("--------------------------------")
+                time.sleep(1) # Pausa para leer el resultado antes de la siguiente ronda
                 
             else:
                 # Si puso un número, pero no es 1, 2, 3 ni 4.
@@ -78,7 +111,7 @@ def main():
     """
     Función principal que maneja el MENÚ DE INICIO de la aplicación.
     """
-    # --- VARIABLE EN ESPAÑOL (Interruptor principal) ---
+    # --- VARIABLE (Interruptor principal) ---
     juego_corriendo = True 
     
     # El bucle principal "mientras la aplicación esté corriendo"

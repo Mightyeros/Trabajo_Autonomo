@@ -27,7 +27,7 @@ El factor suerte: Para que sea un juego real, la computadora no puede ser predec
 Justificación de Herramientas
 
 Lenguaje y Entorno:
-Se eligió Python por su sintaxis clara y legible, ideal para implementar lógica compleja de comparaciones (`if/elif/else`). Además, su manejo de librerías como `random` es ideal para el juego escogido.
+Se eligió Python por su sintaxis clara y legible, ideal para implementar lógica compleja de comparaciones (`if/elif/else`). Además, su manejo de librerías como "random" es ideal para el juego escogido y tambien se utilizara la libreria "time" para darle pausas dramaticas en ciertas partes del juego para que no se vea tan bruscas las transiciones de opciones.
 
 Se utiliza Spyder como Entorno dado que ofrece un excelente entorno para análisis de datos y ejecución paso a paso, lo que facilita la depuración de las estructuras lógicas y la visualización de variables en tiempo real durante el desarrollo del juego.
 
@@ -42,5 +42,14 @@ Dado que el juego es un proceso secuencial con puntos de decisión claros:
 ¿Quiere salir el usuario? 
 
 El diagrama de flujo es el más adecuado para visualizar el algoritmo antes de la codificación porque permite identificar claramente dónde se necesitan bucles y dónde se ramifica la lógica condicional.
+3. Implementación de la Lógica del Juego (FASE 2 TERMINADA)
+
+En la segunda parte del trabajo autónomo, se completó el núcleo funcional del juego, reemplazando los marcadores de posición por la lógica condicional definitiva. Se implementaron los siguientes puntos:
+
+Elección Aleatoria de la PC: Se utilizó la librería `random.randint(1, 3)` para garantizar que la elección de la computadora sea impredecible en cada ronda.
+
+Motor de Reglas (El Árbitro): Se implementó una estructura condicional compuesta (`if/elif/else`) que evalúa las elecciones del jugador frente a la PC. Esta estructura verifica primero el empate y luego utiliza operadores lógicos (`or`, `and`) para determinar si el jugador ha ganado según las reglas clásicas (Piedra vence Tijera, Tijera vence Papel, Papel vence Piedra). Cualquier otro caso resulta en victoria para la PC.
+
+Actualización Dinámica del Marcador: Dependiendo del resultado determinado por el motor de reglas, se incrementa la variable contadora correspondiente (`marcador_jugador += 1` o `marcador_pc += 1`), reflejando el progreso en tiempo real en la siguiente iteración del bucle.
 
 
